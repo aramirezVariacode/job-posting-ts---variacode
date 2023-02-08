@@ -20,6 +20,7 @@ export const PostulantsByJob = () => {
   useEffect(() => {
     getPostulantsByJob(idJob!)
       .then(({ data }: any) => {
+        console.log(data)
         setPostulants(data.registros);
         setLoad(false);
       })
@@ -31,10 +32,6 @@ export const PostulantsByJob = () => {
   return (
     <JobPostingLayout>
       <Grid container spacing={5}>
-        <Grid item xs={12} textAlign="center">
-          <Typography variant="h4">Postulantes a: {postulants[0].jobposition} </Typography>
-        </Grid>
-
         {postulants.length === 0 ? (
           <Grid item xs={12}>
             <Typography variant="body1">
@@ -42,12 +39,22 @@ export const PostulantsByJob = () => {
             </Typography>
           </Grid>
         ) : (
-          <Grid item xs={12}>
-            <PostulantsTable postulants={postulants} />
-          </Grid>
+          <>
+            <Grid item xs={12} textAlign="center">
+              <Typography variant="h4">
+                Postulantes a: {postulants[0]?.jobposition}{" "}
+              </Typography>
+            </Grid>
+
+            <Grid item xs={12}>
+              <PostulantsTable postulants={postulants} />
+            </Grid>
+          </>
         )}
         <Grid item>
-          <Typography variant="body2">{`Postulantes: ${postulants.length}`}</Typography>
+          <Typography variant="body2">{`Postulantes: ${
+            postulants.length ? postulants.length : "0"
+          }`}</Typography>
         </Grid>
       </Grid>
     </JobPostingLayout>

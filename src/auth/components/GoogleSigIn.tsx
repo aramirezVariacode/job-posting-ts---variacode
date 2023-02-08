@@ -7,19 +7,20 @@ import { useAuthStore } from "../hooks/useAuthStore";
 
   
 export const GoogleSigIn = ({profile=''}) => {
-
   const { status } = useAuthStore();
   const isAuthenticating = useMemo(() => status === "checking", [status]);
 
   const { startLoginGoogle } = useAuthStore();
-  
-  const responseGoogle = async (response : any) => {
+
+  const responseGoogle = async (response: any) => {
     startLoginGoogle(response);
   };
 
   //clientID app google
   const clientID =
-    "513536954643-go3s843ag4nn9ibhvihlbh0qcgkbr3t3.apps.googleusercontent.com";
+    "853941733978-kj7avkho2s2r16lgmmknes1a2fs4o0b7.apps.googleusercontent.com";
+
+  //mi-clientId = 513536954643-go3s843ag4nn9ibhvihlbh0qcgkbr3t3.apps.googleusercontent.com
 
   useEffect(() => {
     const start = () => {

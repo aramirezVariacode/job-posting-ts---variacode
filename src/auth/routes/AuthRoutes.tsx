@@ -17,7 +17,6 @@ export const AuthRoutes = () => {
       <Route path="newPassword/:token" element={<NewPassword />} />
       <Route path="/" element={<Navigate to="home" />}></Route>
       <Route path="*" element={<Navigate to="home" />}></Route>
-
     </Routes>
   );
 }
